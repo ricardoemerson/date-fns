@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import { parseISO, format, addMinutes, addHours, setHours, setMinutes } from 'date-fns';
 
 function App() {
+  const [data, setData] = useState(Date());
+  const [horaInicial, setHoraInicial] = useState(Date());
+  const [horaFinal, setHoraFinal] = useState(Date());
+
+  function handleChangeDate() {
+    setHoraInicial(Date())
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>{ data }</p>
+      <p>{ horaInicial }</p>
+      <p>{ horaFinal }</p>
+      <p>{ typeof horaFinal }</p>
+      <p>{ typeof new Date() }</p>
+
+      <button
+        type="button"
+        onClick={ handleChangeDate }
+      >Change Date for Initial Time</button>
+
     </div>
   );
 }
